@@ -328,6 +328,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 1.5rem;
+            align-items: stretch;
         }
 
         /* ========== Project Card ========== */
@@ -341,7 +342,9 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             text-decoration: none;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .project-card::before {
@@ -420,6 +423,7 @@
         .card-content {
             position: relative;
             z-index: 1;
+            flex-grow: 1;
         }
 
         .card-title {
@@ -450,6 +454,7 @@
             position: relative;
             z-index: 1;
             min-height: 40px;
+            margin-top: auto;
         }
 
         .card-link {
