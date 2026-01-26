@@ -449,6 +449,7 @@
             border-top: 1px solid var(--card-border);
             position: relative;
             z-index: 1;
+            min-height: 40px;
         }
 
         .card-link {
@@ -484,14 +485,19 @@
             gap: 0.5rem;
             font-size: 0.8rem;
             color: var(--text-muted);
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .status-dot {
             width: 8px;
             height: 8px;
+            min-width: 8px;
+            min-height: 8px;
             border-radius: 50%;
             background: var(--neon-ivy);
             box-shadow: 0 0 10px var(--neon-ivy);
+            flex-shrink: 0;
         }
 
         .status-dot.coming-soon {
@@ -971,15 +977,15 @@
                                 <circle cx="12" cy="17" r="1.5"></circle>
                             </svg>
                         </div>
-                        <span class="card-category">Special Project</span>
+                        <span class="card-category">特别项目</span>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">YinYang</h3>
-                        <p class="card-description">Metaphysics and numerology data analysis platform. Bridging ancient wisdom with blockchain technology to deliver unique insights through quantified symbolic pattern recognition.</p>
+                        <p class="card-description">玄学与命理数据分析平台。将东方古老智慧与区块链技术相融合，通过量化符号模式识别提供独特洞察。</p>
                     </div>
                     <div class="card-footer">
                         <span class="card-link">
-                            Explore
+                            探索
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -987,7 +993,7 @@
                         </span>
                         <span class="card-status">
                             <span class="status-dot coming-soon"></span>
-                            Coming Soon
+                            即将推出
                         </span>
                     </div>
                 </a>
