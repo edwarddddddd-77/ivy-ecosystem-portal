@@ -647,112 +647,329 @@
         }
 
         /* ========== Responsive Design ========== */
+
+        /* Tablet */
         @media (max-width: 1024px) {
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .hero-stats {
+                gap: 2.5rem;
+            }
         }
 
+        /* Mobile - Large */
         @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            .header-content {
+                gap: 0.25rem;
+            }
+
             nav {
                 display: none;
             }
 
             .mobile-menu-btn {
-                display: flex;
-            }
-
-            .hero {
-                padding: 3rem 1.5rem 4rem;
-            }
-
-            .hero-stats {
-                gap: 2rem;
-            }
-
-            .stat-value {
-                font-size: 2rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .logo-title {
-                font-size: 1.8rem;
-            }
-
-            .logo-tagline {
-                font-size: 0.75rem;
-            }
-
-            main {
-                padding-top: 140px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 1rem;
+                display: none;
             }
 
             .logo-title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
             .logo-tagline {
                 font-size: 0.7rem;
+                text-align: center;
             }
 
             main {
                 padding-top: 120px;
             }
 
+            .hero {
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+
             .hero h1 {
-                font-size: 2rem;
-                letter-spacing: -1px;
+                font-size: 1.75rem;
+                letter-spacing: -0.5px;
+                margin-bottom: 1rem;
             }
 
             .hero p {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+            }
+
+            .hero-stats {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem 1rem;
+                margin-top: 2rem;
+                padding-top: 2rem;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .projects-section {
+                padding: 2rem 1rem;
+            }
+
+            .section-header {
+                margin-bottom: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-header p {
+                font-size: 0.9rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .project-card {
-                padding: 1.5rem;
+                padding: 1.25rem;
+                border-radius: 16px;
+            }
+
+            .card-header {
+                margin-bottom: 1rem;
             }
 
             .card-icon {
-                width: 48px;
-                height: 48px;
-                font-size: 1.25rem;
+                width: 44px;
+                height: 44px;
+            }
+
+            .card-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .card-category {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.6rem;
             }
 
             .card-title {
-                font-size: 1.25rem;
+                font-size: 1.15rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .card-description {
+                font-size: 0.85rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .card-footer {
+                padding-top: 1rem;
+                min-height: 36px;
+            }
+
+            .card-link {
+                font-size: 0.8rem;
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .card-status {
+                font-size: 0.7rem;
+            }
+
+            .status-dot {
+                width: 6px;
+                height: 6px;
+                min-width: 6px;
+                min-height: 6px;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .footer-brand {
+                align-items: center;
             }
 
             .footer-logo {
                 font-size: 1.2rem;
+            }
+
+            .footer-tagline {
+                font-size: 0.65rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem 1.5rem;
+            }
+
+            .footer-links a {
+                font-size: 0.8rem;
+            }
+
+            .footer-social {
+                gap: 0.75rem;
+            }
+
+            .social-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .social-icon svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .footer-bottom {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Mobile - Small */
+        @media (max-width: 480px) {
+            header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo-title {
+                font-size: 1.35rem;
+            }
+
+            .logo-tagline {
+                font-size: 0.6rem;
+                letter-spacing: 0.5px;
+            }
+
+            main {
+                padding-top: 100px;
+            }
+
+            .hero {
+                padding: 1.5rem 1rem 2.5rem;
+            }
+
+            .hero-badge {
+                font-size: 0.7rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .hero-stats {
+                gap: 1rem 0.75rem;
+            }
+
+            .stat-value {
+                font-size: 1.25rem;
+            }
+
+            .stat-label {
+                font-size: 0.6rem;
+                letter-spacing: 0.5px;
+            }
+
+            .projects-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.35rem;
+            }
+
+            .project-card {
+                padding: 1rem;
+            }
+
+            .card-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .card-description {
+                font-size: 0.8rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+            }
+
+            .footer-links {
+                gap: 0.75rem 1rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .project-card:hover {
+                transform: none;
+            }
+
+            .project-card:active {
+                transform: scale(0.98);
+            }
+
+            .card-link {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .nav-cta:hover {
+                background: transparent;
+                color: var(--neon-ivy);
+            }
+
+            .nav-cta:active {
+                background: var(--neon-ivy);
+                color: var(--void-black);
             }
         }
 
