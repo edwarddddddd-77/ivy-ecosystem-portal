@@ -7,7 +7,7 @@
     <title>Ivy 生态系统 | Web3 创新中心</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* ========== CSS Reset & Base ========== */
         *, *::before, *::after {
@@ -82,7 +82,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 1.5rem 2rem;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -94,46 +94,51 @@
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 0.5rem;
         }
 
         .logo {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.75rem;
             text-decoration: none;
-            color: var(--text-primary);
+            gap: 0.25rem;
         }
 
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--neon-ivy) 0%, #00c864 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo-title {
+            font-family: 'Fira Code', monospace;
+            font-size: 2.5rem;
             font-weight: 700;
-            font-size: 1rem;
-            color: var(--void-black);
-            box-shadow: 0 0 20px var(--neon-ivy-glow);
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text span {
             color: var(--neon-ivy);
+            letter-spacing: -1px;
+            text-shadow:
+                0 0 10px rgba(0, 230, 118, 0.5),
+                0 0 20px rgba(0, 230, 118, 0.3),
+                0 0 40px rgba(0, 230, 118, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo-title:hover {
+            text-shadow:
+                0 0 15px rgba(0, 230, 118, 0.7),
+                0 0 30px rgba(0, 230, 118, 0.5),
+                0 0 60px rgba(0, 230, 118, 0.3);
+        }
+
+        .logo-tagline {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
         nav {
             display: flex;
             align-items: center;
             gap: 2rem;
+            margin-top: 1rem;
         }
 
         nav a {
@@ -171,6 +176,7 @@
             color: var(--neon-ivy);
             border-radius: 8px;
             font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -202,7 +208,7 @@
         main {
             position: relative;
             z-index: 1;
-            padding-top: 100px;
+            padding-top: 160px;
         }
 
         /* ========== Hero Section ========== */
@@ -548,19 +554,25 @@
 
         .footer-brand {
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
         }
 
-        .footer-brand .logo-icon {
-            width: 36px;
-            height: 36px;
-            font-size: 0.85rem;
+        .footer-logo {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-ivy);
+            text-shadow:
+                0 0 10px rgba(0, 230, 118, 0.4),
+                0 0 20px rgba(0, 230, 118, 0.2);
         }
 
-        .footer-brand span {
-            font-size: 1.1rem;
-            font-weight: 600;
+        .footer-tagline {
+            font-size: 0.75rem;
+            color: #666;
+            letter-spacing: 0.5px;
         }
 
         .footer-links {
@@ -664,13 +676,35 @@
             }
         }
 
-        @media (max-width: 480px) {
-            header {
-                padding: 0.75rem 1rem;
+        @media (max-width: 768px) {
+            .logo-title {
+                font-size: 1.8rem;
             }
 
-            .logo-text {
-                font-size: 1.2rem;
+            .logo-tagline {
+                font-size: 0.75rem;
+            }
+
+            main {
+                padding-top: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo-title {
+                font-size: 1.5rem;
+            }
+
+            .logo-tagline {
+                font-size: 0.7rem;
+            }
+
+            main {
+                padding-top: 120px;
             }
 
             .hero h1 {
@@ -694,6 +728,10 @@
 
             .card-title {
                 font-size: 1.25rem;
+            }
+
+            .footer-logo {
+                font-size: 1.2rem;
             }
         }
 
@@ -741,8 +779,8 @@
     <header>
         <div class="header-content">
             <a href="#" class="logo">
-                <div class="logo-icon">IVY</div>
-                <div class="logo-text">Ivy<span>.</span></div>
+                <span class="logo-title">IVY-Ecosystem</span>
+                <span class="logo-tagline">The Gateway to Decentralized Future</span>
             </a>
             <nav>
                 <a href="#ecosystem">生态系统</a>
@@ -956,8 +994,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="logo-icon">IVY</div>
-                <span>Ivy Ecosystem</span>
+                <span class="footer-logo">IVY-Ecosystem</span>
+                <span class="footer-tagline">The Gateway to Decentralized Future</span>
             </div>
             <div class="footer-links">
                 <a href="#">Documentation</a>
