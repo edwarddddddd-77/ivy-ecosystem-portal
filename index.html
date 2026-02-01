@@ -1284,6 +1284,198 @@
             }
         }
 
+        /* ========== Announcement History Panel ========== */
+        .announcement-history-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .announcement-history-btn:hover {
+            color: var(--neon-ivy);
+        }
+
+        .announcement-history-btn .badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 8px;
+            height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+            display: none;
+        }
+
+        .announcement-history-btn .badge.show {
+            display: block;
+        }
+
+        .history-panel-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .history-panel-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .history-panel {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            max-width: 90vw;
+            height: 100vh;
+            background: var(--card-dark);
+            border-left: 1px solid var(--card-border);
+            z-index: 2001;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .history-panel.active {
+            right: 0;
+        }
+
+        .history-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+            flex-shrink: 0;
+        }
+
+        .history-panel-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .history-panel-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-secondary);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .history-panel-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+
+        .history-panel-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .history-panel-body::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .history-panel-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .history-panel-body::-webkit-scrollbar-thumb {
+            background: var(--card-border);
+            border-radius: 2px;
+        }
+
+        .history-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 0.75rem;
+            transition: border-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .history-item:hover {
+            border-color: rgba(0, 230, 118, 0.3);
+        }
+
+        .history-item.latest {
+            border-color: rgba(0, 230, 118, 0.2);
+            background: var(--neon-ivy-dim);
+        }
+
+        .history-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .history-item-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .history-item-tag {
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: var(--neon-ivy-dim);
+            color: var(--neon-ivy);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .history-item-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .history-item-summary {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .history-empty {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 3rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .history-panel {
+                width: 100%;
+                max-width: 100vw;
+                right: -100%;
+            }
+        }
+
         /* ========== Animations ========== */
         @keyframes fadeInUp {
             from {
@@ -1348,14 +1540,30 @@
                 <a href="#community" data-i18n="nav.community">Community</a>
                 <a href="#docs" data-i18n="nav.docs">Docs</a>
                 <button class="nav-cta" data-i18n="nav.launchApp">Launch App</button>
+                <button class="announcement-history-btn" id="historyBtn" aria-label="Announcements">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="badge" id="historyBadge"></span>
+                </button>
                 <div class="lang-switcher">
                     <button class="lang-btn active" data-lang="en">EN</button>
                     <button class="lang-btn" data-lang="zh-TW">繁</button>
                 </div>
             </nav>
-            <div class="lang-switcher" style="display: none;" id="mobileLangSwitcher">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="zh-TW">繁</button>
+            <div style="display: none; align-items: center; gap: 0.5rem;" id="mobileToolbar">
+                <button class="announcement-history-btn" id="historyBtnMobile" aria-label="Announcements">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="badge" id="historyBadgeMobile"></span>
+                </button>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="zh-TW">繁</button>
+                </div>
             </div>
         </div>
     </header>
@@ -1595,6 +1803,21 @@
         </div>
     </footer>
 
+    <!-- History Panel -->
+    <div class="history-panel-overlay" id="historyOverlay"></div>
+    <div class="history-panel" id="historyPanel">
+        <div class="history-panel-header">
+            <h3 id="historyPanelTitle">Announcements</h3>
+            <button class="history-panel-close" id="historyPanelClose" aria-label="Close">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="history-panel-body" id="historyPanelBody"></div>
+    </div>
+
     <!-- Announcement Modal -->
     <div class="modal-overlay" id="announcementModal">
         <div class="modal">
@@ -1617,142 +1840,152 @@
     <!-- JavaScript -->
     <script>
         (function() {
-            // Translations
+            // ==================== Announcement History ====================
+            // All announcements stored here, newest first
+            const announcements = [
+                {
+                    id: 'v3',
+                    date: '2025-02-05',
+                    tag: { en: 'Event', 'zh-TW': '活動' },
+                    title: {
+                        en: 'IVY Studio Online Product Presentation',
+                        'zh-TW': 'IVY Studio 線上產品說明會'
+                    },
+                    summary: {
+                        en: 'IVY Studio will hold its first online product presentation on February 7 at 14:00 via Google Meet.',
+                        'zh-TW': 'IVY Studio 將於2月7日14:00舉辦首次線上產品說明會，使用 Google Meet 進行。'
+                    },
+                    bar: {
+                        en: '📅 IVY Studio Online Product Presentation | Feb 7, 14:00 | <a href="https://meet.google.com/" target="_blank">Learn about Google Meet →</a>',
+                        'zh-TW': '📅 IVY Studio 線上產品說明會 | 2月7日 14:00 | <a href="https://meet.google.com/" target="_blank">了解 Google Meet →</a>'
+                    },
+                    modal: {
+                        en: {
+                            title: 'Product Presentation Notice',
+                            content: '<p><strong>IVY Studio Online Product Presentation</strong></p><p>We cordially invite you to join IVY Studio\'s first online product presentation! We will introduce the latest developments and future plans of the IVY Ecosystem.</p><ul><li>Time: February 7 (Friday) 14:00</li><li>Platform: Google Meet Online Conference</li><li>Meeting link will be announced on February 6</li></ul><p>We look forward to your participation!</p>',
+                            later: 'Got it',
+                            primary: 'Learn about Google Meet'
+                        },
+                        'zh-TW': {
+                            title: '產品說明會通知',
+                            content: '<p><strong>IVY Studio 線上產品說明會</strong></p><p>我們誠邀您參加 IVY Studio 首次線上產品說明會！屆時將為您詳細介紹 IVY 生態系統的最新進展與未來規劃。</p><ul><li>時間：2月7日（週五）14:00</li><li>平台：Google Meet 線上會議</li><li>會議連結將於2月6日在此公告發布</li></ul><p>期待您的參與！</p>',
+                            later: '我知道了',
+                            primary: '了解 Google Meet'
+                        }
+                    },
+                    link: 'https://meet.google.com/'
+                },
+                {
+                    id: 'v2',
+                    date: '2025-02-01',
+                    tag: { en: 'Launch', 'zh-TW': '上線' },
+                    title: {
+                        en: 'IVY Ecosystem Portal Launched',
+                        'zh-TW': 'IVY 生態系統入口網站上線'
+                    },
+                    summary: {
+                        en: 'The IVY Ecosystem portal is now live! Explore our suite of DeFi protocols, blockchain infrastructure, and intelligent analytics.',
+                        'zh-TW': 'IVY 生態系統入口網站正式上線！探索我們的 DeFi 協議、區塊鏈基礎設施和智能分析套件。'
+                    }
+                }
+            ];
+
+            // The latest announcement (first in array) is the active one
+            const latestAnnouncement = announcements[0];
+            const ANNOUNCEMENT_VERSION = latestAnnouncement.id;
+
+            // ==================== Translations ====================
             const translations = {
                 en: {
-                    // Navigation
                     'nav.ecosystem': 'Ecosystem',
                     'nav.developers': 'Developers',
                     'nav.community': 'Community',
                     'nav.docs': 'Docs',
                     'nav.launchApp': 'Launch App',
-
-                    // Hero
                     'hero.badge': 'Ecosystem in Development',
                     'hero.highlight': 'Decentralized',
                     'hero.title': 'Finance of the Future',
                     'hero.description': 'Enter the Ivy Ecosystem — a unified suite of next-generation DeFi protocols, blockchain infrastructure, and intelligent analytics powering the Web3 revolution.',
-
-                    // Stats
                     'stats.defi': 'Decentralized Finance',
                     'stats.layer1': 'Blockchain Infrastructure',
                     'stats.ai': 'Predictive Analytics',
                     'stats.web3': 'Decentralized Apps',
-
-                    // Projects
                     'projects.title': 'Explore the Ecosystem',
                     'projects.subtitle': 'Discover the interconnected products powering the future of decentralized finance',
-
-                    // Cards
                     'cards.protocol.category': 'Core',
                     'cards.protocol.description': 'An innovative DeFi protocol combining PID control theory with Real World Assets (RWA), featuring dynamic issuance mechanisms that respond instantly to market conditions for sustainable adaptive yields.',
                     'cards.protocol.link': 'Enter Protocol',
-
                     'cards.chain.category': 'Infrastructure',
                     'cards.chain.description': 'An intent-centric blockchain designed for the AI era. Users express goals, AI Agents plan optimal paths, Block-STM enables parallel execution, and native Session Keys provide seamless authorization.',
                     'cards.chain.link': 'Explore Chain',
-
                     'cards.predict.category': 'dApp',
                     'cards.predict.description': 'Predict market trends with wisdom, compete with global players. Price movements, trending events, instant 1v1 PK with smart matching. Transparent on-chain settlement makes every insight valuable.',
                     'cards.predict.link': 'Start Predicting',
-
                     'cards.nextk.category': 'Analytics',
                     'cards.nextk.description': 'AI-powered prediction engine providing multi-timeframe probability forecasts for crypto, stocks, and forex. Features key level analysis, trading simulation, and historical backtesting.',
                     'cards.nextk.link': 'View Analytics',
-
                     'cards.yinyang.category': 'Special Project',
                     'cards.yinyang.description': 'A metaphysics and destiny analytics platform. Blending ancient Eastern wisdom with blockchain technology, providing unique insights through quantified symbolic pattern recognition.',
                     'cards.yinyang.link': 'Explore',
-
-                    // Status
                     'status.testing': 'Testing',
                     'status.inDev': 'In Development',
                     'status.comingSoon': 'Coming Soon',
-
-                    // Footer
                     'footer.docs': 'Documentation',
                     'footer.whitepaper': 'Whitepaper',
                     'footer.brand': 'Brand Kit',
                     'footer.careers': 'Careers',
                     'footer.contact': 'Contact',
-
-                    // Announcement
-                    'announcement.bar': '📅 IVY Studio Online Product Presentation | Feb 7, 14:00 | <a href="https://meet.google.com/" target="_blank">Learn about Google Meet →</a>',
-                    'modal.title': 'Product Presentation Notice',
-                    'modal.content': '<p><strong>IVY Studio Online Product Presentation</strong></p><p>We cordially invite you to join IVY Studio\'s first online product presentation! We will introduce the latest developments and future plans of the IVY Ecosystem.</p><ul><li>Time: February 7 (Friday) 14:00</li><li>Platform: Google Meet Online Conference</li><li>Meeting link will be announced on February 6</li></ul><p>We look forward to your participation!</p>',
-                    'modal.later': 'Got it',
-                    'modal.primary': 'Learn about Google Meet'
+                    'history.title': 'Announcements',
+                    'history.latest': 'Latest'
                 },
                 'zh-TW': {
-                    // Navigation
                     'nav.ecosystem': '生態系統',
                     'nav.developers': '開發者',
                     'nav.community': '社群',
                     'nav.docs': '文件',
                     'nav.launchApp': '啟動應用',
-
-                    // Hero
                     'hero.badge': '生態系統開發中',
                     'hero.highlight': '去中心化',
                     'hero.title': '金融的未來',
                     'hero.description': '進入 Ivy 生態系統 — 集新一代 DeFi 協議、區塊鏈基礎設施和智能分析於一體的統一套件，驅動 Web3 革命。',
-
-                    // Stats
                     'stats.defi': '去中心化金融',
                     'stats.layer1': '區塊鏈基礎設施',
                     'stats.ai': '智能預測分析',
                     'stats.web3': '去中心化應用',
-
-                    // Projects
                     'projects.title': '探索生態系統',
                     'projects.subtitle': '發現驅動去中心化金融未來的互聯產品',
-
-                    // Cards
                     'cards.protocol.category': '核心',
                     'cards.protocol.description': 'IVY Protocol 是創新的 DeFi 協議，融合 PID 控制理論與真實世界資產（RWA），通過動態發行機制即時回應市場，打造可持續的自適應收益系統。',
                     'cards.protocol.link': '進入協議',
-
                     'cards.chain.category': '基礎設施',
                     'cards.chain.description': 'IVY Chain 是為 AI 時代設計的意圖公鏈。用戶表達目標，AI Agent 自動規劃最優路徑，Block-STM 並行執行，原生 Session Key 實現無感授權。',
                     'cards.chain.link': '探索區塊鏈',
-
                     'cards.predict.category': '去中心化應用',
                     'cards.predict.description': '用智慧預測市場趨勢，與全球玩家切磋觀點。價格走勢、熱點事件，一對一即時 PK，智能匹配秒找對手。鏈上透明結算，讓每一次洞察都有價值。',
                     'cards.predict.link': '開始預測',
-
                     'cards.nextk.category': '數據分析',
                     'cards.nextk.description': '基於 AI 預測引擎，為加密貨幣、股票、外匯提供多週期概率預測。支持關鍵價位分析、交易模擬與歷史回測，助你洞察市場走勢。',
                     'cards.nextk.link': '查看分析',
-
                     'cards.yinyang.category': '特別項目',
                     'cards.yinyang.description': '玄學與命理數據分析平台。將東方古老智慧與區塊鏈技術相融合，通過量化符號模式識別提供獨特洞察。',
                     'cards.yinyang.link': '探索',
-
-                    // Status
                     'status.testing': '測試中',
                     'status.inDev': '開發中',
                     'status.comingSoon': '即將推出',
-
-                    // Footer
                     'footer.docs': '技術文件',
                     'footer.whitepaper': '白皮書',
                     'footer.brand': '品牌素材',
                     'footer.careers': '加入我們',
                     'footer.contact': '聯繫我們',
-
-                    // Announcement
-                    'announcement.bar': '📅 IVY Studio 線上產品說明會 | 2月7日 14:00 | <a href="https://meet.google.com/" target="_blank">了解 Google Meet →</a>',
-                    'modal.title': '產品說明會通知',
-                    'modal.content': '<p><strong>IVY Studio 線上產品說明會</strong></p><p>我們誠邀您參加 IVY Studio 首次線上產品說明會！屆時將為您詳細介紹 IVY 生態系統的最新進展與未來規劃。</p><ul><li>時間：2月7日（週五）14:00</li><li>平台：Google Meet 線上會議</li><li>會議連結將於2月6日在此公告發布</li></ul><p>期待您的參與！</p>',
-                    'modal.later': '我知道了',
-                    'modal.primary': '了解 Google Meet'
+                    'history.title': '公告記錄',
+                    'history.latest': '最新'
                 }
             };
 
-            // Current language
+            // ==================== State ====================
             let currentLang = localStorage.getItem('ivy_lang') || 'en';
 
-            // DOM Elements
+            // ==================== DOM Elements ====================
             const announcementBar = document.getElementById('announcementBar');
             const announcementText = document.getElementById('announcementText');
             const announcementClose = document.getElementById('announcementClose');
@@ -1762,105 +1995,185 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
             const modalPrimary = document.getElementById('modalPrimary');
+            const historyPanel = document.getElementById('historyPanel');
+            const historyOverlay = document.getElementById('historyOverlay');
+            const historyPanelBody = document.getElementById('historyPanelBody');
+            const historyPanelTitle = document.getElementById('historyPanelTitle');
+            const historyPanelClose = document.getElementById('historyPanelClose');
 
             // Storage keys
             const ANNOUNCEMENT_CLOSED_KEY = 'ivy_announcement_closed';
             const MODAL_SEEN_KEY = 'ivy_modal_seen';
-            const ANNOUNCEMENT_VERSION = 'v3';
 
-            // Apply translations
-            function applyTranslations(lang) {
-                const t = translations[lang];
+            // ==================== History Panel ====================
+            function renderHistory(lang) {
+                historyPanelTitle.textContent = translations[lang]['history.title'];
+                const latestLabel = translations[lang]['history.latest'];
 
-                // Update all elements with data-i18n attribute
-                document.querySelectorAll('[data-i18n]').forEach(el => {
-                    const key = el.getAttribute('data-i18n');
-                    if (t[key]) {
-                        el.textContent = t[key];
-                    }
+                historyPanelBody.innerHTML = announcements.map(function(a, i) {
+                    var isLatest = i === 0;
+                    return '<div class="history-item' + (isLatest ? ' latest' : '') + '" data-announcement-id="' + a.id + '">' +
+                        '<div class="history-item-header">' +
+                            '<span class="history-item-date">' + a.date + '</span>' +
+                            (isLatest ? '<span class="history-item-tag">' + latestLabel + '</span>' :
+                             (a.tag ? '<span class="history-item-tag" style="background:rgba(255,255,255,0.05);color:var(--text-muted);">' + (a.tag[lang] || a.tag.en) + '</span>' : '')) +
+                        '</div>' +
+                        '<div class="history-item-title">' + (a.title[lang] || a.title.en) + '</div>' +
+                        '<div class="history-item-summary">' + (a.summary[lang] || a.summary.en) + '</div>' +
+                    '</div>';
+                }).join('');
+
+                // Click on history item to show its modal (if it has modal data)
+                historyPanelBody.querySelectorAll('.history-item').forEach(function(el) {
+                    el.addEventListener('click', function() {
+                        var aid = this.getAttribute('data-announcement-id');
+                        var a = announcements.find(function(x) { return x.id === aid; });
+                        if (a && a.modal) {
+                            showAnnouncementModal(a, lang);
+                            closeHistoryPanel();
+                        }
+                    });
                 });
-
-                // Update announcement bar
-                announcementText.innerHTML = t['announcement.bar'];
-
-                // Update modal
-                modalTitle.textContent = t['modal.title'];
-                modalContent.innerHTML = t['modal.content'];
-                modalLater.textContent = t['modal.later'];
-                modalPrimary.textContent = t['modal.primary'];
-
-                // Update HTML lang attribute
-                document.documentElement.lang = lang === 'zh-TW' ? 'zh-TW' : 'en';
-
-                // Update active button
-                document.querySelectorAll('.lang-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.lang === lang);
-                });
-
-                // Save preference
-                localStorage.setItem('ivy_lang', lang);
-                currentLang = lang;
             }
 
-            // Language switcher event
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    applyTranslations(this.dataset.lang);
-                });
+            function openHistoryPanel() {
+                historyOverlay.classList.add('active');
+                historyPanel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                renderHistory(currentLang);
+            }
+
+            function closeHistoryPanel() {
+                historyOverlay.classList.remove('active');
+                historyPanel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // History button events
+            document.getElementById('historyBtn').addEventListener('click', openHistoryPanel);
+            document.getElementById('historyBtnMobile').addEventListener('click', openHistoryPanel);
+            historyPanelClose.addEventListener('click', closeHistoryPanel);
+            historyOverlay.addEventListener('click', closeHistoryPanel);
+
+            // ==================== Announcement Modal ====================
+            function showAnnouncementModal(announcement, lang) {
+                var m = announcement.modal[lang] || announcement.modal.en;
+                modalTitle.textContent = m.title;
+                modalContent.innerHTML = m.content;
+                modalLater.textContent = m.later;
+                modalPrimary.textContent = m.primary;
+                if (announcement.link) {
+                    modalPrimary.href = announcement.link;
+                    modalPrimary.style.display = '';
+                } else {
+                    modalPrimary.style.display = 'none';
+                }
+                announcementModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                announcementModal.classList.remove('active');
+                document.body.style.overflow = '';
+                // Mark as seen for current language
+                localStorage.setItem(MODAL_SEEN_KEY + '_' + currentLang, ANNOUNCEMENT_VERSION);
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modalLater.addEventListener('click', closeModal);
+            announcementModal.addEventListener('click', function(e) {
+                if (e.target === announcementModal) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (announcementModal.classList.contains('active')) closeModal();
+                    if (historyPanel.classList.contains('active')) closeHistoryPanel();
+                }
             });
 
-            // Show mobile language switcher
-            if (window.innerWidth <= 768) {
-                document.getElementById('mobileLangSwitcher').style.display = 'flex';
-            }
-
-            // Check if announcement bar was closed
-            const isAnnouncementClosed = localStorage.getItem(ANNOUNCEMENT_CLOSED_KEY) === ANNOUNCEMENT_VERSION;
-            if (isAnnouncementClosed) {
-                announcementBar.classList.add('hidden');
-                document.body.classList.add('announcement-closed');
-            }
-
-            // Close announcement bar
+            // ==================== Announcement Bar ====================
             announcementClose.addEventListener('click', function() {
                 announcementBar.classList.add('hidden');
                 document.body.classList.add('announcement-closed');
                 localStorage.setItem(ANNOUNCEMENT_CLOSED_KEY, ANNOUNCEMENT_VERSION);
             });
 
-            // Check if modal was seen
-            const isModalSeen = localStorage.getItem(MODAL_SEEN_KEY) === ANNOUNCEMENT_VERSION;
-            if (!isModalSeen) {
+            // ==================== Apply Translations ====================
+            function applyTranslations(lang) {
+                var t = translations[lang];
+
+                document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                    var key = el.getAttribute('data-i18n');
+                    if (t[key]) el.textContent = t[key];
+                });
+
+                // Update announcement bar with latest announcement
+                announcementText.innerHTML = latestAnnouncement.bar[lang] || latestAnnouncement.bar.en;
+
+                // Update modal content with latest announcement
+                var m = latestAnnouncement.modal[lang] || latestAnnouncement.modal.en;
+                modalTitle.textContent = m.title;
+                modalContent.innerHTML = m.content;
+                modalLater.textContent = m.later;
+                modalPrimary.textContent = m.primary;
+
+                document.documentElement.lang = lang === 'zh-TW' ? 'zh-TW' : 'en';
+
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                localStorage.setItem('ivy_lang', lang);
+                currentLang = lang;
+            }
+
+            // ==================== Language Switcher ====================
+            document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var newLang = this.dataset.lang;
+                    if (newLang === currentLang) return;
+
+                    applyTranslations(newLang);
+
+                    // Re-show modal if not seen in this language
+                    var seenInLang = localStorage.getItem(MODAL_SEEN_KEY + '_' + newLang) === ANNOUNCEMENT_VERSION;
+                    if (!seenInLang && latestAnnouncement.modal) {
+                        setTimeout(function() {
+                            showAnnouncementModal(latestAnnouncement, newLang);
+                        }, 300);
+                    }
+
+                    // Re-show announcement bar if not closed
+                    var barClosed = localStorage.getItem(ANNOUNCEMENT_CLOSED_KEY) === ANNOUNCEMENT_VERSION;
+                    if (!barClosed) {
+                        announcementBar.classList.remove('hidden');
+                        document.body.classList.remove('announcement-closed');
+                    }
+                });
+            });
+
+            // ==================== Mobile Toolbar ====================
+            if (window.innerWidth <= 768) {
+                document.getElementById('mobileToolbar').style.display = 'flex';
+            }
+
+            // ==================== Init ====================
+            // Check announcement bar state
+            var isBarClosed = localStorage.getItem(ANNOUNCEMENT_CLOSED_KEY) === ANNOUNCEMENT_VERSION;
+            if (isBarClosed) {
+                announcementBar.classList.add('hidden');
+                document.body.classList.add('announcement-closed');
+            }
+
+            // Check modal state for current language
+            var isModalSeen = localStorage.getItem(MODAL_SEEN_KEY + '_' + currentLang) === ANNOUNCEMENT_VERSION;
+            if (!isModalSeen && latestAnnouncement.modal) {
                 setTimeout(function() {
-                    announcementModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                    showAnnouncementModal(latestAnnouncement, currentLang);
                 }, 1000);
             }
 
-            // Close modal function
-            function closeModal() {
-                announcementModal.classList.remove('active');
-                document.body.style.overflow = '';
-                localStorage.setItem(MODAL_SEEN_KEY, ANNOUNCEMENT_VERSION);
-            }
-
-            // Modal close events
-            modalClose.addEventListener('click', closeModal);
-            modalLater.addEventListener('click', closeModal);
-
-            announcementModal.addEventListener('click', function(e) {
-                if (e.target === announcementModal) {
-                    closeModal();
-                }
-            });
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && announcementModal.classList.contains('active')) {
-                    closeModal();
-                }
-            });
-
-            // Initialize with saved language
+            // Apply initial translations
             applyTranslations(currentLang);
         })();
     </script>
