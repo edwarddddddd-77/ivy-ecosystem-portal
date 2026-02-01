@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ivy 生态系统 - 新一代 DeFi 基础设施、区块链网络和去中心化应用的统一门户。">
-    <title>Ivy 生态系统 | Web3 创新中心</title>
+    <meta name="description" content="Ivy Ecosystem - The unified portal for next-generation DeFi infrastructure, blockchain networks, and decentralized applications.">
+    <title>Ivy Ecosystem | Web3 Innovation Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -185,6 +185,39 @@
             background: var(--neon-ivy);
             color: var(--void-black);
             box-shadow: 0 0 30px var(--neon-ivy-glow);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+            padding: 0.4rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .lang-btn {
+            padding: 0.4rem 0.8rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .lang-btn:hover {
+            color: var(--text-secondary);
+        }
+
+        .lang-btn.active {
+            background: var(--neon-ivy);
+            color: var(--void-black);
         }
 
         .mobile-menu-btn {
@@ -676,6 +709,11 @@
 
             nav {
                 display: none;
+            }
+
+            .lang-switcher {
+                margin-left: 0;
+                margin-top: 0.5rem;
             }
 
             .mobile-menu-btn {
@@ -1180,6 +1218,8 @@
             font-family: 'Space Grotesk', sans-serif;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
         }
 
         .modal-btn.primary {
@@ -1282,8 +1322,8 @@
 <body>
     <!-- Announcement Bar -->
     <div class="announcement-bar" id="announcementBar">
-        <span>📅 IVY Studio 线上产品说明会 | 2月7日 14:00 | <a href="https://meet.google.com/" target="_blank">了解 Google Meet →</a></span>
-        <button class="announcement-close" id="announcementClose" aria-label="关闭公告">
+        <span id="announcementText"></span>
+        <button class="announcement-close" id="announcementClose" aria-label="Close">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -1303,17 +1343,20 @@
                 <span class="logo-tagline">The Gateway to Decentralized Future</span>
             </a>
             <nav>
-                <a href="#ecosystem">生态系统</a>
-                <a href="#developers">开发者</a>
-                <a href="#community">社区</a>
-                <a href="#docs">文档</a>
-                <button class="nav-cta">启动应用</button>
+                <a href="#ecosystem" data-i18n="nav.ecosystem">Ecosystem</a>
+                <a href="#developers" data-i18n="nav.developers">Developers</a>
+                <a href="#community" data-i18n="nav.community">Community</a>
+                <a href="#docs" data-i18n="nav.docs">Docs</a>
+                <button class="nav-cta" data-i18n="nav.launchApp">Launch App</button>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="zh-TW">繁</button>
+                </div>
             </nav>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="lang-switcher" style="display: none;" id="mobileLangSwitcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="zh-TW">繁</button>
+            </div>
         </div>
     </header>
 
@@ -1321,26 +1364,26 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-badge">生态系统开发中</div>
-            <h1><span class="highlight">去中心化</span>金融的未来</h1>
-            <p>进入 Ivy 生态系统 — 集新一代 DeFi 协议、区块链基础设施和智能分析于一体的统一套件，驱动 Web3 革命。</p>
+            <div class="hero-badge" data-i18n="hero.badge">Ecosystem in Development</div>
+            <h1><span class="highlight" data-i18n="hero.highlight">Decentralized</span> <span data-i18n="hero.title">Finance of the Future</span></h1>
+            <p data-i18n="hero.description">Enter the Ivy Ecosystem — a unified suite of next-generation DeFi protocols, blockchain infrastructure, and intelligent analytics powering the Web3 revolution.</p>
 
             <div class="hero-stats">
                 <div class="stat">
                     <span class="stat-value">DeFi</span>
-                    <span class="stat-label">去中心化金融</span>
+                    <span class="stat-label" data-i18n="stats.defi">Decentralized Finance</span>
                 </div>
                 <div class="stat">
                     <span class="stat-value">Layer1</span>
-                    <span class="stat-label">区块链基础设施</span>
+                    <span class="stat-label" data-i18n="stats.layer1">Blockchain Infrastructure</span>
                 </div>
                 <div class="stat">
                     <span class="stat-value">AI</span>
-                    <span class="stat-label">智能预测分析</span>
+                    <span class="stat-label" data-i18n="stats.ai">Predictive Analytics</span>
                 </div>
                 <div class="stat">
                     <span class="stat-value">Web3</span>
-                    <span class="stat-label">去中心化应用</span>
+                    <span class="stat-label" data-i18n="stats.web3">Decentralized Apps</span>
                 </div>
             </div>
         </section>
@@ -1348,8 +1391,8 @@
         <!-- Projects Grid Section -->
         <section class="projects-section" id="ecosystem">
             <div class="section-header">
-                <h2>探索生态系统</h2>
-                <p>发现驱动去中心化金融未来的互联产品</p>
+                <h2 data-i18n="projects.title">Explore the Ecosystem</h2>
+                <p data-i18n="projects.subtitle">Discover the interconnected products powering the future of decentralized finance</p>
             </div>
 
             <div class="projects-grid">
@@ -1363,15 +1406,15 @@
                                 <polyline points="2 12 12 17 22 12"></polyline>
                             </svg>
                         </div>
-                        <span class="card-category">核心</span>
+                        <span class="card-category" data-i18n="cards.protocol.category">Core</span>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">IVY Protocol</h3>
-                        <p class="card-description">IVY Protocol 是创新的 DeFi 协议，融合 PID 控制理论与真实世界资产（RWA），通过动态发行机制即时回应市场，打造可持续的自适应收益系统。</p>
+                        <p class="card-description" data-i18n="cards.protocol.description">An innovative DeFi protocol combining PID control theory with Real World Assets (RWA), featuring dynamic issuance mechanisms that respond instantly to market conditions for sustainable adaptive yields.</p>
                     </div>
                     <div class="card-footer">
                         <span class="card-link">
-                            进入协议
+                            <span data-i18n="cards.protocol.link">Enter Protocol</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -1379,7 +1422,7 @@
                         </span>
                         <span class="card-status">
                             <span class="status-dot testing"></span>
-                            测试中
+                            <span data-i18n="status.testing">Testing</span>
                         </span>
                     </div>
                 </a>
@@ -1393,15 +1436,15 @@
                                 <line x1="1" y1="10" x2="23" y2="10"></line>
                             </svg>
                         </div>
-                        <span class="card-category">基础设施</span>
+                        <span class="card-category" data-i18n="cards.chain.category">Infrastructure</span>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">IVY Chain</h3>
-                        <p class="card-description">IVY Chain 是为 AI 时代设计的意图公链。用户表达目标，AI Agent 自动规划最优路径，Block-STM 并行执行，原生 Session Key 实现无感授权，让 AI 代理安全高效地代你上链。</p>
+                        <p class="card-description" data-i18n="cards.chain.description">An intent-centric blockchain designed for the AI era. Users express goals, AI Agents plan optimal paths, Block-STM enables parallel execution, and native Session Keys provide seamless authorization.</p>
                     </div>
                     <div class="card-footer">
                         <span class="card-link">
-                            探索链
+                            <span data-i18n="cards.chain.link">Explore Chain</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -1409,7 +1452,7 @@
                         </span>
                         <span class="card-status">
                             <span class="status-dot in-dev"></span>
-                            开发中
+                            <span data-i18n="status.inDev">In Development</span>
                         </span>
                     </div>
                 </a>
@@ -1423,15 +1466,15 @@
                                 <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
                             </svg>
                         </div>
-                        <span class="card-category">去中心化应用</span>
+                        <span class="card-category" data-i18n="cards.predict.category">dApp</span>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">IVY-Predict</h3>
-                        <p class="card-description">用智慧预测市场趋势，与全球玩家切磋观点。价格走势、热点事件，一对一即时 PK，智能匹配秒找对手。链上透明结算，让每一次洞察都有价值。</p>
+                        <p class="card-description" data-i18n="cards.predict.description">Predict market trends with wisdom, compete with global players. Price movements, trending events, instant 1v1 PK with smart matching. Transparent on-chain settlement makes every insight valuable.</p>
                     </div>
                     <div class="card-footer">
                         <span class="card-link">
-                            开始预测
+                            <span data-i18n="cards.predict.link">Start Predicting</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -1439,7 +1482,7 @@
                         </span>
                         <span class="card-status">
                             <span class="status-dot testing"></span>
-                            测试中
+                            <span data-i18n="status.testing">Testing</span>
                         </span>
                     </div>
                 </a>
@@ -1454,15 +1497,15 @@
                                 <line x1="6" y1="20" x2="6" y2="14"></line>
                             </svg>
                         </div>
-                        <span class="card-category">数据分析</span>
+                        <span class="card-category" data-i18n="cards.nextk.category">Analytics</span>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">NEXT-K</h3>
-                        <p class="card-description">基于 AI 预测引擎，为加密货币、股票、外汇提供多周期概率预测。支持关键价位分析、交易模拟与历史回测，助你洞察市场走势。</p>
+                        <p class="card-description" data-i18n="cards.nextk.description">AI-powered prediction engine providing multi-timeframe probability forecasts for crypto, stocks, and forex. Features key level analysis, trading simulation, and historical backtesting.</p>
                     </div>
                     <div class="card-footer">
                         <span class="card-link">
-                            查看分析
+                            <span data-i18n="cards.nextk.link">View Analytics</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -1470,7 +1513,7 @@
                         </span>
                         <span class="card-status">
                             <span class="status-dot in-dev"></span>
-                            开发中
+                            <span data-i18n="status.inDev">In Development</span>
                         </span>
                     </div>
                 </a>
@@ -1486,15 +1529,15 @@
                                 <circle cx="12" cy="17" r="1.5"></circle>
                             </svg>
                         </div>
-                        <span class="card-category">特别项目</span>
+                        <span class="card-category" data-i18n="cards.yinyang.category">Special Project</span>
                     </div>
                     <div class="card-content">
                         <h3 class="card-title">YinYang</h3>
-                        <p class="card-description">玄学与命理数据分析平台。将东方古老智慧与区块链技术相融合，通过量化符号模式识别提供独特洞察。</p>
+                        <p class="card-description" data-i18n="cards.yinyang.description">A metaphysics and destiny analytics platform. Blending ancient Eastern wisdom with blockchain technology, providing unique insights through quantified symbolic pattern recognition.</p>
                     </div>
                     <div class="card-footer">
                         <span class="card-link">
-                            探索
+                            <span data-i18n="cards.yinyang.link">Explore</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -1502,7 +1545,7 @@
                         </span>
                         <span class="card-status">
                             <span class="status-dot coming-soon"></span>
-                            即将推出
+                            <span data-i18n="status.comingSoon">Coming Soon</span>
                         </span>
                     </div>
                 </a>
@@ -1518,11 +1561,11 @@
                 <span class="footer-tagline">The Gateway to Decentralized Future</span>
             </div>
             <div class="footer-links">
-                <a href="#">Documentation</a>
-                <a href="#">Whitepaper</a>
-                <a href="#">Brand Kit</a>
-                <a href="#">Careers</a>
-                <a href="#">Contact</a>
+                <a href="#" data-i18n="footer.docs">Documentation</a>
+                <a href="#" data-i18n="footer.whitepaper">Whitepaper</a>
+                <a href="#" data-i18n="footer.brand">Brand Kit</a>
+                <a href="#" data-i18n="footer.careers">Careers</a>
+                <a href="#" data-i18n="footer.contact">Contact</a>
             </div>
             <div class="footer-social">
                 <a href="#" class="social-icon" aria-label="Twitter">
@@ -1555,27 +1598,18 @@
     <!-- Announcement Modal -->
     <div class="modal-overlay" id="announcementModal">
         <div class="modal">
-            <button class="modal-close" id="modalClose" aria-label="关闭">
+            <button class="modal-close" id="modalClose" aria-label="Close">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
             <div class="modal-icon">📅</div>
-            <h2 class="modal-title">产品说明会通知</h2>
-            <div class="modal-content">
-                <p><strong>IVY Studio 线上产品说明会</strong></p>
-                <p>我们诚邀您参加 IVY Studio 首次线上产品说明会！届时将为您详细介绍 IVY 生态系统的最新进展与未来规划。</p>
-                <ul>
-                    <li>时间：2月7日（周五）14:00</li>
-                    <li>平台：Google Meet 在线会议</li>
-                    <li>会议链接将于2月6日在此公告发布</li>
-                </ul>
-                <p>期待您的参与！</p>
-            </div>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-content" id="modalContent"></div>
             <div class="modal-actions">
-                <button class="modal-btn secondary" id="modalLater">我知道了</button>
-                <a href="https://meet.google.com/" target="_blank" class="modal-btn primary">了解 Google Meet</a>
+                <button class="modal-btn secondary" id="modalLater"></button>
+                <a href="https://meet.google.com/" target="_blank" class="modal-btn primary" id="modalPrimary"></a>
             </div>
         </div>
     </div>
@@ -1583,17 +1617,202 @@
     <!-- JavaScript -->
     <script>
         (function() {
+            // Translations
+            const translations = {
+                en: {
+                    // Navigation
+                    'nav.ecosystem': 'Ecosystem',
+                    'nav.developers': 'Developers',
+                    'nav.community': 'Community',
+                    'nav.docs': 'Docs',
+                    'nav.launchApp': 'Launch App',
+
+                    // Hero
+                    'hero.badge': 'Ecosystem in Development',
+                    'hero.highlight': 'Decentralized',
+                    'hero.title': 'Finance of the Future',
+                    'hero.description': 'Enter the Ivy Ecosystem — a unified suite of next-generation DeFi protocols, blockchain infrastructure, and intelligent analytics powering the Web3 revolution.',
+
+                    // Stats
+                    'stats.defi': 'Decentralized Finance',
+                    'stats.layer1': 'Blockchain Infrastructure',
+                    'stats.ai': 'Predictive Analytics',
+                    'stats.web3': 'Decentralized Apps',
+
+                    // Projects
+                    'projects.title': 'Explore the Ecosystem',
+                    'projects.subtitle': 'Discover the interconnected products powering the future of decentralized finance',
+
+                    // Cards
+                    'cards.protocol.category': 'Core',
+                    'cards.protocol.description': 'An innovative DeFi protocol combining PID control theory with Real World Assets (RWA), featuring dynamic issuance mechanisms that respond instantly to market conditions for sustainable adaptive yields.',
+                    'cards.protocol.link': 'Enter Protocol',
+
+                    'cards.chain.category': 'Infrastructure',
+                    'cards.chain.description': 'An intent-centric blockchain designed for the AI era. Users express goals, AI Agents plan optimal paths, Block-STM enables parallel execution, and native Session Keys provide seamless authorization.',
+                    'cards.chain.link': 'Explore Chain',
+
+                    'cards.predict.category': 'dApp',
+                    'cards.predict.description': 'Predict market trends with wisdom, compete with global players. Price movements, trending events, instant 1v1 PK with smart matching. Transparent on-chain settlement makes every insight valuable.',
+                    'cards.predict.link': 'Start Predicting',
+
+                    'cards.nextk.category': 'Analytics',
+                    'cards.nextk.description': 'AI-powered prediction engine providing multi-timeframe probability forecasts for crypto, stocks, and forex. Features key level analysis, trading simulation, and historical backtesting.',
+                    'cards.nextk.link': 'View Analytics',
+
+                    'cards.yinyang.category': 'Special Project',
+                    'cards.yinyang.description': 'A metaphysics and destiny analytics platform. Blending ancient Eastern wisdom with blockchain technology, providing unique insights through quantified symbolic pattern recognition.',
+                    'cards.yinyang.link': 'Explore',
+
+                    // Status
+                    'status.testing': 'Testing',
+                    'status.inDev': 'In Development',
+                    'status.comingSoon': 'Coming Soon',
+
+                    // Footer
+                    'footer.docs': 'Documentation',
+                    'footer.whitepaper': 'Whitepaper',
+                    'footer.brand': 'Brand Kit',
+                    'footer.careers': 'Careers',
+                    'footer.contact': 'Contact',
+
+                    // Announcement
+                    'announcement.bar': '📅 IVY Studio Online Product Presentation | Feb 7, 14:00 | <a href="https://meet.google.com/" target="_blank">Learn about Google Meet →</a>',
+                    'modal.title': 'Product Presentation Notice',
+                    'modal.content': '<p><strong>IVY Studio Online Product Presentation</strong></p><p>We cordially invite you to join IVY Studio\'s first online product presentation! We will introduce the latest developments and future plans of the IVY Ecosystem.</p><ul><li>Time: February 7 (Friday) 14:00</li><li>Platform: Google Meet Online Conference</li><li>Meeting link will be announced on February 6</li></ul><p>We look forward to your participation!</p>',
+                    'modal.later': 'Got it',
+                    'modal.primary': 'Learn about Google Meet'
+                },
+                'zh-TW': {
+                    // Navigation
+                    'nav.ecosystem': '生態系統',
+                    'nav.developers': '開發者',
+                    'nav.community': '社群',
+                    'nav.docs': '文件',
+                    'nav.launchApp': '啟動應用',
+
+                    // Hero
+                    'hero.badge': '生態系統開發中',
+                    'hero.highlight': '去中心化',
+                    'hero.title': '金融的未來',
+                    'hero.description': '進入 Ivy 生態系統 — 集新一代 DeFi 協議、區塊鏈基礎設施和智能分析於一體的統一套件，驅動 Web3 革命。',
+
+                    // Stats
+                    'stats.defi': '去中心化金融',
+                    'stats.layer1': '區塊鏈基礎設施',
+                    'stats.ai': '智能預測分析',
+                    'stats.web3': '去中心化應用',
+
+                    // Projects
+                    'projects.title': '探索生態系統',
+                    'projects.subtitle': '發現驅動去中心化金融未來的互聯產品',
+
+                    // Cards
+                    'cards.protocol.category': '核心',
+                    'cards.protocol.description': 'IVY Protocol 是創新的 DeFi 協議，融合 PID 控制理論與真實世界資產（RWA），通過動態發行機制即時回應市場，打造可持續的自適應收益系統。',
+                    'cards.protocol.link': '進入協議',
+
+                    'cards.chain.category': '基礎設施',
+                    'cards.chain.description': 'IVY Chain 是為 AI 時代設計的意圖公鏈。用戶表達目標，AI Agent 自動規劃最優路徑，Block-STM 並行執行，原生 Session Key 實現無感授權。',
+                    'cards.chain.link': '探索區塊鏈',
+
+                    'cards.predict.category': '去中心化應用',
+                    'cards.predict.description': '用智慧預測市場趨勢，與全球玩家切磋觀點。價格走勢、熱點事件，一對一即時 PK，智能匹配秒找對手。鏈上透明結算，讓每一次洞察都有價值。',
+                    'cards.predict.link': '開始預測',
+
+                    'cards.nextk.category': '數據分析',
+                    'cards.nextk.description': '基於 AI 預測引擎，為加密貨幣、股票、外匯提供多週期概率預測。支持關鍵價位分析、交易模擬與歷史回測，助你洞察市場走勢。',
+                    'cards.nextk.link': '查看分析',
+
+                    'cards.yinyang.category': '特別項目',
+                    'cards.yinyang.description': '玄學與命理數據分析平台。將東方古老智慧與區塊鏈技術相融合，通過量化符號模式識別提供獨特洞察。',
+                    'cards.yinyang.link': '探索',
+
+                    // Status
+                    'status.testing': '測試中',
+                    'status.inDev': '開發中',
+                    'status.comingSoon': '即將推出',
+
+                    // Footer
+                    'footer.docs': '技術文件',
+                    'footer.whitepaper': '白皮書',
+                    'footer.brand': '品牌素材',
+                    'footer.careers': '加入我們',
+                    'footer.contact': '聯繫我們',
+
+                    // Announcement
+                    'announcement.bar': '📅 IVY Studio 線上產品說明會 | 2月7日 14:00 | <a href="https://meet.google.com/" target="_blank">了解 Google Meet →</a>',
+                    'modal.title': '產品說明會通知',
+                    'modal.content': '<p><strong>IVY Studio 線上產品說明會</strong></p><p>我們誠邀您參加 IVY Studio 首次線上產品說明會！屆時將為您詳細介紹 IVY 生態系統的最新進展與未來規劃。</p><ul><li>時間：2月7日（週五）14:00</li><li>平台：Google Meet 線上會議</li><li>會議連結將於2月6日在此公告發布</li></ul><p>期待您的參與！</p>',
+                    'modal.later': '我知道了',
+                    'modal.primary': '了解 Google Meet'
+                }
+            };
+
+            // Current language
+            let currentLang = localStorage.getItem('ivy_lang') || 'en';
+
             // DOM Elements
             const announcementBar = document.getElementById('announcementBar');
+            const announcementText = document.getElementById('announcementText');
             const announcementClose = document.getElementById('announcementClose');
             const announcementModal = document.getElementById('announcementModal');
             const modalClose = document.getElementById('modalClose');
             const modalLater = document.getElementById('modalLater');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            const modalPrimary = document.getElementById('modalPrimary');
 
             // Storage keys
             const ANNOUNCEMENT_CLOSED_KEY = 'ivy_announcement_closed';
             const MODAL_SEEN_KEY = 'ivy_modal_seen';
-            const ANNOUNCEMENT_VERSION = 'v2'; // 更改版本号可重新显示公告
+            const ANNOUNCEMENT_VERSION = 'v3';
+
+            // Apply translations
+            function applyTranslations(lang) {
+                const t = translations[lang];
+
+                // Update all elements with data-i18n attribute
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (t[key]) {
+                        el.textContent = t[key];
+                    }
+                });
+
+                // Update announcement bar
+                announcementText.innerHTML = t['announcement.bar'];
+
+                // Update modal
+                modalTitle.textContent = t['modal.title'];
+                modalContent.innerHTML = t['modal.content'];
+                modalLater.textContent = t['modal.later'];
+                modalPrimary.textContent = t['modal.primary'];
+
+                // Update HTML lang attribute
+                document.documentElement.lang = lang === 'zh-TW' ? 'zh-TW' : 'en';
+
+                // Update active button
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                // Save preference
+                localStorage.setItem('ivy_lang', lang);
+                currentLang = lang;
+            }
+
+            // Language switcher event
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    applyTranslations(this.dataset.lang);
+                });
+            });
+
+            // Show mobile language switcher
+            if (window.innerWidth <= 768) {
+                document.getElementById('mobileLangSwitcher').style.display = 'flex';
+            }
 
             // Check if announcement bar was closed
             const isAnnouncementClosed = localStorage.getItem(ANNOUNCEMENT_CLOSED_KEY) === ANNOUNCEMENT_VERSION;
@@ -1612,7 +1831,6 @@
             // Check if modal was seen
             const isModalSeen = localStorage.getItem(MODAL_SEEN_KEY) === ANNOUNCEMENT_VERSION;
             if (!isModalSeen) {
-                // Show modal after a short delay for better UX
                 setTimeout(function() {
                     announcementModal.classList.add('active');
                     document.body.style.overflow = 'hidden';
@@ -1630,19 +1848,20 @@
             modalClose.addEventListener('click', closeModal);
             modalLater.addEventListener('click', closeModal);
 
-            // Close modal when clicking overlay
             announcementModal.addEventListener('click', function(e) {
                 if (e.target === announcementModal) {
                     closeModal();
                 }
             });
 
-            // Close modal with Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && announcementModal.classList.contains('active')) {
                     closeModal();
                 }
             });
+
+            // Initialize with saved language
+            applyTranslations(currentLang);
         })();
     </script>
 </body>
