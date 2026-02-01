@@ -208,6 +208,11 @@
         main {
             position: relative;
             z-index: 1;
+            padding-top: 204px;
+            transition: padding-top 0.3s ease;
+        }
+
+        body.announcement-closed main {
             padding-top: 160px;
         }
 
@@ -973,6 +978,272 @@
             }
         }
 
+        /* ========== Announcement Bar ========== */
+        .announcement-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1100;
+            background: linear-gradient(90deg, var(--neon-ivy) 0%, #00c864 100%);
+            color: var(--void-black);
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .announcement-bar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .announcement-bar a {
+            color: var(--void-black);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .announcement-bar a:hover {
+            text-decoration: none;
+        }
+
+        .announcement-close {
+            position: absolute;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--void-black);
+            cursor: pointer;
+            padding: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .announcement-close:hover {
+            opacity: 1;
+        }
+
+        /* Adjust header when announcement bar is visible */
+        header {
+            top: 44px;
+            transition: top 0.3s ease;
+        }
+
+        .announcement-bar.hidden + header,
+        body.announcement-closed header {
+            top: 0;
+        }
+
+        /* ========== Modal ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--card-dark);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            max-width: 500px;
+            width: 100%;
+            padding: 2.5rem;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-ivy), #00ff88, var(--neon-ivy));
+            border-radius: 24px 24px 0 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--neon-ivy-dim) 0%, transparent 100%);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .modal-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .modal-content li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--neon-ivy);
+            border-radius: 50%;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.primary {
+            background: var(--neon-ivy);
+            border: none;
+            color: var(--void-black);
+        }
+
+        .modal-btn.primary:hover {
+            box-shadow: 0 0 30px var(--neon-ivy-glow);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+        }
+
+        .modal-btn.secondary:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Modal responsive */
+        @media (max-width: 768px) {
+            .announcement-bar {
+                padding: 0.6rem 3rem 0.6rem 1rem;
+                font-size: 0.8rem;
+                text-align: center;
+            }
+
+            header {
+                top: 40px;
+            }
+
+            main {
+                padding-top: 200px;
+            }
+
+            body.announcement-closed main {
+                padding-top: 160px;
+            }
+
+            .modal {
+                padding: 1.5rem;
+                border-radius: 20px;
+            }
+
+            .modal-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1.35rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+
         /* ========== Animations ========== */
         @keyframes fadeInUp {
             from {
@@ -1009,6 +1280,17 @@
     </style>
 </head>
 <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <span>🎉 IVY Protocol 测试网已上线！立即体验最新 DeFi 功能 <a href="https://www.ivyprotocol.io/" target="_blank">了解更多 →</a></span>
+        <button class="announcement-close" id="announcementClose" aria-label="关闭公告">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
     <!-- Background Effects -->
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
@@ -1269,5 +1551,100 @@
             <p>&copy; 2024 Ivy Ecosystem. All rights reserved. Building the decentralized future.</p>
         </div>
     </footer>
+
+    <!-- Announcement Modal -->
+    <div class="modal-overlay" id="announcementModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="关闭">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-icon">📢</div>
+            <h2 class="modal-title">最新公告</h2>
+            <div class="modal-content">
+                <p><strong>IVY Protocol 测试网正式上线！</strong></p>
+                <p>我们很高兴地宣布，IVY Protocol 测试网已经开放。现在你可以：</p>
+                <ul>
+                    <li>体验创新的 PID 控制 DeFi 机制</li>
+                    <li>测试真实世界资产（RWA）集成</li>
+                    <li>参与早期用户激励计划</li>
+                    <li>提交反馈帮助我们改进</li>
+                </ul>
+                <p>加入我们的社区，一起构建去中心化金融的未来！</p>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn secondary" id="modalLater">稍后再看</button>
+                <a href="https://www.ivyprotocol.io/" target="_blank" class="modal-btn primary">立即体验</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        (function() {
+            // DOM Elements
+            const announcementBar = document.getElementById('announcementBar');
+            const announcementClose = document.getElementById('announcementClose');
+            const announcementModal = document.getElementById('announcementModal');
+            const modalClose = document.getElementById('modalClose');
+            const modalLater = document.getElementById('modalLater');
+
+            // Storage keys
+            const ANNOUNCEMENT_CLOSED_KEY = 'ivy_announcement_closed';
+            const MODAL_SEEN_KEY = 'ivy_modal_seen';
+            const ANNOUNCEMENT_VERSION = 'v1'; // 更改版本号可重新显示公告
+
+            // Check if announcement bar was closed
+            const isAnnouncementClosed = localStorage.getItem(ANNOUNCEMENT_CLOSED_KEY) === ANNOUNCEMENT_VERSION;
+            if (isAnnouncementClosed) {
+                announcementBar.classList.add('hidden');
+                document.body.classList.add('announcement-closed');
+            }
+
+            // Close announcement bar
+            announcementClose.addEventListener('click', function() {
+                announcementBar.classList.add('hidden');
+                document.body.classList.add('announcement-closed');
+                localStorage.setItem(ANNOUNCEMENT_CLOSED_KEY, ANNOUNCEMENT_VERSION);
+            });
+
+            // Check if modal was seen
+            const isModalSeen = localStorage.getItem(MODAL_SEEN_KEY) === ANNOUNCEMENT_VERSION;
+            if (!isModalSeen) {
+                // Show modal after a short delay for better UX
+                setTimeout(function() {
+                    announcementModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }, 1000);
+            }
+
+            // Close modal function
+            function closeModal() {
+                announcementModal.classList.remove('active');
+                document.body.style.overflow = '';
+                localStorage.setItem(MODAL_SEEN_KEY, ANNOUNCEMENT_VERSION);
+            }
+
+            // Modal close events
+            modalClose.addEventListener('click', closeModal);
+            modalLater.addEventListener('click', closeModal);
+
+            // Close modal when clicking overlay
+            announcementModal.addEventListener('click', function(e) {
+                if (e.target === announcementModal) {
+                    closeModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && announcementModal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
