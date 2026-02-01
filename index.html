@@ -1282,7 +1282,7 @@
 <body>
     <!-- Announcement Bar -->
     <div class="announcement-bar" id="announcementBar">
-        <span>🎉 IVY Protocol 测试网已上线！立即体验最新 DeFi 功能 <a href="https://www.ivyprotocol.io/" target="_blank">了解更多 →</a></span>
+        <span>📅 IVY Studio 线上产品说明会 | 2月7日 14:00 | <a href="https://meet.google.com/" target="_blank">了解 Google Meet →</a></span>
         <button class="announcement-close" id="announcementClose" aria-label="关闭公告">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -1561,22 +1561,21 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-            <div class="modal-icon">📢</div>
-            <h2 class="modal-title">最新公告</h2>
+            <div class="modal-icon">📅</div>
+            <h2 class="modal-title">产品说明会通知</h2>
             <div class="modal-content">
-                <p><strong>IVY Protocol 测试网正式上线！</strong></p>
-                <p>我们很高兴地宣布，IVY Protocol 测试网已经开放。现在你可以：</p>
+                <p><strong>IVY Studio 线上产品说明会</strong></p>
+                <p>我们诚邀您参加 IVY Studio 首次线上产品说明会！届时将为您详细介绍 IVY 生态系统的最新进展与未来规划。</p>
                 <ul>
-                    <li>体验创新的 PID 控制 DeFi 机制</li>
-                    <li>测试真实世界资产（RWA）集成</li>
-                    <li>参与早期用户激励计划</li>
-                    <li>提交反馈帮助我们改进</li>
+                    <li>时间：2月7日（周五）14:00</li>
+                    <li>平台：Google Meet 在线会议</li>
+                    <li>会议链接将于2月6日在此公告发布</li>
                 </ul>
-                <p>加入我们的社区，一起构建去中心化金融的未来！</p>
+                <p>期待您的参与！</p>
             </div>
             <div class="modal-actions">
-                <button class="modal-btn secondary" id="modalLater">稍后再看</button>
-                <a href="https://www.ivyprotocol.io/" target="_blank" class="modal-btn primary">立即体验</a>
+                <button class="modal-btn secondary" id="modalLater">我知道了</button>
+                <a href="https://meet.google.com/" target="_blank" class="modal-btn primary">了解 Google Meet</a>
             </div>
         </div>
     </div>
@@ -1594,7 +1593,7 @@
             // Storage keys
             const ANNOUNCEMENT_CLOSED_KEY = 'ivy_announcement_closed';
             const MODAL_SEEN_KEY = 'ivy_modal_seen';
-            const ANNOUNCEMENT_VERSION = 'v1'; // 更改版本号可重新显示公告
+            const ANNOUNCEMENT_VERSION = 'v2'; // 更改版本号可重新显示公告
 
             // Check if announcement bar was closed
             const isAnnouncementClosed = localStorage.getItem(ANNOUNCEMENT_CLOSED_KEY) === ANNOUNCEMENT_VERSION;
