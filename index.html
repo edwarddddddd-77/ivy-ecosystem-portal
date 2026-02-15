@@ -684,6 +684,34 @@
             font-size: 0.85rem;
         }
 
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--card-border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-contact svg {
+            flex-shrink: 0;
+            color: var(--neon-ivy);
+        }
+
+        .footer-contact a {
+            color: var(--neon-ivy);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
         /* ========== Responsive Design ========== */
 
         /* Tablet */
@@ -1841,7 +1869,7 @@
                 <a href="#" data-i18n="footer.whitepaper">Whitepaper</a>
                 <a href="#" data-i18n="footer.brand">Brand Kit</a>
                 <a href="#" data-i18n="footer.careers">Careers</a>
-                <a href="#" data-i18n="footer.contact">Contact</a>
+                <a href="mailto:stromanvickie1022000@gmail.com" data-i18n="footer.contact">Contact</a>
             </div>
             <div class="footer-social">
                 <a href="#" class="social-icon" aria-label="Twitter">
@@ -1865,6 +1893,14 @@
                     </svg>
                 </a>
             </div>
+        </div>
+        <div class="footer-contact">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M22 4l-10 8L2 4"></path>
+            </svg>
+            <span data-i18n="footer.feedback">Feedback & Contact:</span>
+            <a href="mailto:stromanvickie1022000@gmail.com">stromanvickie1022000@gmail.com</a>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 Ivy Ecosystem. All rights reserved. Building the decentralized future.</p>
@@ -2134,6 +2170,7 @@
                     'footer.brand': 'Brand Kit',
                     'footer.careers': 'Careers',
                     'footer.contact': 'Contact',
+                    'footer.feedback': 'Feedback & Contact:',
                     'history.title': 'Announcements',
                     'history.latest': 'Latest'
                 },
@@ -2176,6 +2213,7 @@
                     'footer.brand': '品牌素材',
                     'footer.careers': '加入我們',
                     'footer.contact': '聯繫我們',
+                    'footer.feedback': '問題反饋 & 聯繫我們：',
                     'history.title': '公告記錄',
                     'history.latest': '最新'
                 }
