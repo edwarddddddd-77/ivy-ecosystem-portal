@@ -1605,6 +1605,7 @@
         .project-card:nth-child(3) { animation-delay: 0.3s; }
         .project-card:nth-child(4) { animation-delay: 0.4s; }
         .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
@@ -1636,6 +1637,7 @@
                 <a href="#community" data-i18n="nav.community">Community</a>
                 <a href="#docs" data-i18n="nav.docs">Docs</a>
                 <button class="nav-cta" data-i18n="nav.launchApp">Launch App</button>
+                <a href="https://merge.ivyeco.co" target="_blank" rel="noopener noreferrer" class="nav-cta" style="text-decoration:none;text-align:center;" data-i18n="nav.merge">Account Merge</a>
                 <button class="announcement-history-btn" id="historyBtn" aria-label="Announcements">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -1818,6 +1820,37 @@
                         <span class="card-status">
                             <span class="status-dot in-dev"></span>
                             <span data-i18n="status.inDev">In Development</span>
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Account Merge -->
+                <a href="https://merge.ivyeco.co" target="_blank" rel="noopener noreferrer" class="project-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="8.5" cy="7" r="4"></circle>
+                                <polyline points="17 11 19 13 23 9"></polyline>
+                            </svg>
+                        </div>
+                        <span class="card-category" data-i18n="cards.merge.category">Tool</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-i18n="cards.merge.title">Account Merge</h3>
+                        <p class="card-description" data-i18n="cards.merge.description">Consolidate multiple wallet addresses into one primary account. Connect wallets, verify via SIWE signatures, preview merged data, and confirm — all on Arbitrum.</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-link">
+                            <span data-i18n="cards.merge.link">Start Merging</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                        <span class="card-status">
+                            <span class="status-dot testing"></span>
+                            <span data-i18n="status.testing">Testing</span>
                         </span>
                     </div>
                 </a>
@@ -2165,6 +2198,7 @@
                     'nav.community': 'Community',
                     'nav.docs': 'Docs',
                     'nav.launchApp': 'Launch App',
+                    'nav.merge': 'Account Merge',
                     'hero.badge': 'Ecosystem in Development',
                     'hero.highlight': 'Decentralized',
                     'hero.title': 'Finance of the Future',
@@ -2190,6 +2224,10 @@
                     'cards.yinyang.category': 'Special Project',
                     'cards.yinyang.description': 'A metaphysics and destiny analytics platform. Blending ancient Eastern wisdom with blockchain technology, providing unique insights through quantified symbolic pattern recognition.',
                     'cards.yinyang.link': 'Explore',
+                    'cards.merge.category': 'Tool',
+                    'cards.merge.title': 'Account Merge',
+                    'cards.merge.description': 'Consolidate multiple wallet addresses into one primary account. Connect wallets, verify via SIWE signatures, preview merged data, and confirm — all on Arbitrum.',
+                    'cards.merge.link': 'Start Merging',
                     'status.testing': 'Testing',
                     'status.inDev': 'In Development',
                     'status.comingSoon': 'Coming Soon',
@@ -2208,6 +2246,7 @@
                     'nav.community': '社群',
                     'nav.docs': '文件',
                     'nav.launchApp': '啟動應用',
+                    'nav.merge': '帳號合併',
                     'hero.badge': '生態系統開發中',
                     'hero.highlight': '去中心化',
                     'hero.title': '金融的未來',
@@ -2233,6 +2272,10 @@
                     'cards.yinyang.category': '特別項目',
                     'cards.yinyang.description': '玄學與命理數據分析平台。將東方古老智慧與區塊鏈技術相融合，通過量化符號模式識別提供獨特洞察。',
                     'cards.yinyang.link': '探索',
+                    'cards.merge.category': '工具',
+                    'cards.merge.title': '帳號合併',
+                    'cards.merge.description': '將多個錢包地址合併到一個主帳號。連接錢包、SIWE 簽名驗證、預覽合併數據、確認合併 — 全程在 Arbitrum 鏈上完成。',
+                    'cards.merge.link': '開始合併',
                     'status.testing': '測試中',
                     'status.inDev': '開發中',
                     'status.comingSoon': '即將推出',
