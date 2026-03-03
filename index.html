@@ -625,6 +625,17 @@
             box-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
         }
 
+        .status-dot.live {
+            background: #22c55e;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+            animation: pulse-live 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-live {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
         /* ========== Special Card (YinYang) ========== */
         .project-card.special {
             background: linear-gradient(135deg, var(--card-dark) 0%, rgba(30, 20, 40, 1) 100%);
@@ -1948,8 +1959,8 @@
                             </svg>
                         </span>
                         <span class="card-status">
-                            <span class="status-dot testing"></span>
-                            <span data-i18n="status.testing">Testing</span>
+                            <span class="status-dot live"></span>
+                            <span data-i18n="status.live">Live</span>
                         </span>
                     </div>
                 </a>
@@ -2386,6 +2397,7 @@
                     'status.testing': 'Testing',
                     'status.inDev': 'In Development',
                     'status.comingSoon': 'Coming Soon',
+                    'status.live': 'Live',
                     'footer.docs': 'Documentation',
                     'footer.whitepaper': 'Whitepaper',
                     'footer.brand': 'Brand Kit',
@@ -2436,6 +2448,7 @@
                     'status.testing': '測試中',
                     'status.inDev': '開發中',
                     'status.comingSoon': '即將推出',
+                    'status.live': '已上線',
                     'footer.docs': '技術文件',
                     'footer.whitepaper': '白皮書',
                     'footer.brand': '品牌素材',
